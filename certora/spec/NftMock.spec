@@ -49,7 +49,7 @@ rule sanity {
 }
 
 // parametric rule
-rule NoChangeTotalSupply(method f) {
+rule no_change_to_total_supply(method f) {
     uint256 totalSupplyBefore = totalSupply();
     env e;
     calldataarg args;
