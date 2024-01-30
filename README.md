@@ -1,66 +1,24 @@
-## Foundry
+# Gas Bad NFT Marketplace 
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+We are building a "gas bad" marketplace. An NFT marketplace, but we are going for a gas optimized version. 
 
-Foundry consists of:
+To do this, we are writing 2 types of smart contracts:
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+1. Reference contracts in solidity 
+2. Optimized contracts in solidity / assembly 
 
-## Documentation
+We will be deploying `GasBadNftMarketplace.sol` to the Ethereum mainnet, but are using `NftMarketplace.sol` as a reference point. 
 
-https://book.getfoundry.sh/
+## Notes:
+- At this time, Certora uses `remappings.txt` to know remappings instead of `foundry.toml`. 
+- If we change `basic` in `NftMock.conf` -> `none`, we skip the trivial invariant check 
 
-## Usage
+## Learnings 
 
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- Parametric rules 
+- Invariants 
+- Ghosts 
+- Hooks 
+- Imports & Multi-contracts 
+- Dispatches & Summaries 
+- Sanity 

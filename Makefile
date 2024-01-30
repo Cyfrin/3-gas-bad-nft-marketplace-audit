@@ -1,6 +1,6 @@
 -include .env
 
-.PHONY: all test clean deploy fund help install snapshot format anvil append-counterexamples
+.PHONY: all test clean deploy fund help install snapshot format anvil certoraNft certora
 
 DEFAULT_ANVIL_KEY := 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
 
@@ -12,7 +12,7 @@ clean  :; forge clean
 # Remove modules
 remove :; rm -rf .gitmodules && rm -rf .git/modules/* && rm -rf lib && touch .gitmodules && git add . && git commit -m "modules"
 
-install :; forge install foundry-rs/forge-std --no-commit 
+install :; forge install foundry-rs/forge-std --no-commit && forge install openzeppelin/openzeppelin-contracts --no-commit
 
 # Update Dependencies
 update:; forge update
@@ -38,3 +38,8 @@ scopefile :; @tree ./src/ | sed 's/└/#/g' | awk -F '── ' '!/\.sol$$/ { pat
 slither :; slither . --config-file slither.config.json 
 
 aderyn :; aderyn . 
+
+certoraSingle :; certoraRun NftMock.sol --verify NftMock:certora/spec/NftMock.spec --solc solc8.20 --msg "Verifying by CLI instead of conf"
+certoraNft :;  certoraRun ./certora/conf/NftMock.conf
+certora :;  certoraRun certora/conf/GasBadNft.conf
+certoraSingleRule :;  certoraRun certora/conf/GasBadNft.conf --rule calling_any_function_should_result_in_each_contract_having_the_same_state
