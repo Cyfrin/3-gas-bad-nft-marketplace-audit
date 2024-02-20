@@ -1,5 +1,10 @@
 # Gas Bad NFT Marketplace 
 
+<p align="center">
+<img src="./img/gas-bad.png" width="400" alt="gas-bad">
+<br/>
+
+
 We are building a "gas bad" marketplace. An NFT marketplace, but we are going for a gas optimized version. 
 
 To do this, we are writing 2 types of smart contracts:
