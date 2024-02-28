@@ -34,10 +34,10 @@ rule minting_mints_one_nft() {
     // or just `mint(e)` 
 
     // Assert
-    assert to_mathint(nft.balanceOf(minter)) == balanceBefore + 1;
+    assert to_mathint(nft.balanceOf(minter)) == balanceBefore + 1, "Only 1 NFT should be minted";
 }
 
-// This is known as a parametric rule, as we use the `f` keyword
+// This is known as a parametric rule, as there is a variable of type "method", which we named `f`
 // This means, we call any random function `f` with any random calldata `arg` 
 // We can also say which contracts we want to call f on, in this case, we said the nft contract
 rule sanity {
@@ -48,11 +48,11 @@ rule sanity {
     satisfy true;
 }
 
-// parametric rule
+// parametric rule example
 rule no_change_to_total_supply(method f) {
     uint256 totalSupplyBefore = totalSupply();
     env e;
     calldataarg args;
     f(e, args);
-    assert totalSupply() == totalSupplyBefore;
+    assert totalSupply() == totalSupplyBefore, "Total supply should not change";
 }
