@@ -34,6 +34,7 @@ ghost mathint listingUpdatesCount {
     init_state axiom listingUpdatesCount == 0;
 }
 
+// we could make these persistent as a work around as well
 ghost mathint log4Count {
     init_state axiom log4Count == 0;
 }

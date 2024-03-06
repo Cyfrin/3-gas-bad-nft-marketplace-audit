@@ -154,3 +154,4 @@ forge coverage --report debug
 - The seller can front-run a bought NFT and cancel the listing
 - The seller can front-run a bought NFT and update the listing
 - We should emit an event for withdrawing proceeds
+- There are MEV/Front Running issues all over the place
