@@ -40,7 +40,7 @@ ghost mathint log4Count {
 }
 
 // Can't do `s_listings[KEY address nftAddress][KEY uint256 tokenId]` since that returns a struct
-hook Sstore s_listings[KEY address nftAddress][KEY uint256 tokenId].price uint256 price STORAGE {
+hook Sstore s_listings[KEY address nftAddress][KEY uint256 tokenId].price uint256 price {
     listingUpdatesCount = listingUpdatesCount + 1;
 }
 
